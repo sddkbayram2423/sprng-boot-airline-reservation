@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments.html :: headerfiles">
+</head>
+<body class="back">
+<header th:insert="fragments.html :: nav"></header>
+
+
+
+<br><br>
+<div class="container">
+
+    <div style="width:1000px;margin-left: auto;margin-right: auto;margin-top:12px;padding: 24px;margin-bottom: 50px;">
+    
+        <div class="card">
+        
+            <div class="card-header">
+					<div class="row" >
+						<div class="col-10">
+							<i class="fa fa-user" style="align: center;"> </i> ADD NEW FLIGHT
+						</div>
+					</div>
+				</div>
+            
+            <div class="card-block" style="padding: 24px;">
+                <form action="#" th:action="@{/flight/addNewFlight}" method="post" th:object="${flight}">
+                	<div class="row ">
+                		<div class="col-4 form-group">
+                            <input type="text" class="form-control" th:field="*{fightCode}" placeholder="Enter firstname">
+                            <p style="color: red;" th:if="${#fields.hasErrors('fightCode')}" th:errors="*{fightCode}"/>
+                		
+                		</div>
+                		<div class="col-4 form-group">
+                             <input type="text" class="form-control" th:field="*{operatingAirlines}" placeholder="Enter operating airlines">
+                             <p style="color: red;" th:if="${#fields.hasErrors('operatingAirlines')}" th:errors="*{operatingAirlines}"/>
+                		
+                		</div>
+                		<div class="col-4 form-group">
+                             <input type="text" class="form-control" th:field="*{flightClass}" placeholder="Enter flight class">
+                             <p style="color: red;" th:if="${#fields.hasErrors('flightClass')}" th:errors="*{flightClass}"/>
+                		</div>
+                	</div>
+                	<div class="row ">
+                		<div class="col-4 form-group">
+							<input type="text" class="form-control" th:field="*{departureCity}" placeholder="Enter departure city">
+                            <p style="color: red;" th:if="${#fields.hasErrors('departureCity')}" th:errors="*{departureCity}"/>
+                		</div>
+                		<div class="col-4 form-group">
+                             <input type="text" class="form-control" th:field="*{departureTime}" placeholder="Enter departure time">
+                             <p style="color: red;" th:if="${#fields.hasErrors('departureTime')}" th:errors="*{departureTime}"/>
+                		</div>
+                		 		<div class="col-4 form-group">
+                      		<input type="date" class="form-control" th:field="*{departureDate}" placeholder="Enter departure date">
+                            <p style="color: red;" th:if="${#fields.hasErrors('departureDate')}" th:errors="*{departureDate}"/>
+                		
+                		</div>
+                	</div>
+                
+                	<div class="row ">
+                		<div class="col-4 form-group">
+                		   <input type="text" class="form-control" th:field="*{arrivalCity}" placeholder="Enter arrival city">
+                            <p style="color: red;" th:if="${#fields.hasErrors('arrivalCity')}" th:errors="*{arrivalCity}"/>
+                		</div>
+                		<div class="col-4 form-group">
+                			 <input type="text" class="form-control" th:field="*{arrivalTime}" placeholder="Enter arrival time">
+                             <p style="color: red;" th:if="${#fields.hasErrors('arrivalTime')}" th:errors="*{arrivalTime}"/>
+                		</div>
+                		 <div class="col-4 form-group">
+                		 	 <input type="date" class="form-control" th:field="*{arrivalDate}" placeholder="Enter arrival date">
+                             <p style="color: red;" th:if="${#fields.hasErrors('arrivalDate')}" th:errors="*{arrivalDate}"/>
+                		</div>
+                	</div>
+                	
+                    <div class="row ">
+                		<div class="col-4 form-group">
+                			<input type="number" class="form-control" th:field="*{leftPassengerCount}" placeholder="Enter left passenger count">
+                             <p style="color: red;" th:if="${#fields.hasErrors('leftPassengerCount')}" th:errors="*{leftPassengerCount}"/>
+                		</div>
+                		<div class="col-4 form-group">
+                			<input type="text" class="form-control" th:field="*{flightTime}" placeholder="Enter flight time">
+                             <p style="color: red;" th:if="${#fields.hasErrors('flightTime')}" th:errors="*{flightTime}"/>
+                		</div>
+                		 <div class="col-4 form-group">
+                			<input type="number" class="form-control" th:field="*{price}" placeholder="Enter price">
+                             <p style="color: red;" th:if="${#fields.hasErrors('price')}" th:errors="*{price}"/>
+                		</div>
+                	</div>
+                
+							<div class="row">
+								<div class="col-10">
+								</div>
+								<div class="col-1 ml-5">
+									<button type="submit" class="btn btn-sm btn-info">Add Flight</button>
+								</div>
+							</div>
+                        </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer th:insert="fragments.html :: footer"></</footer>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+	
+<head th:fragment="headerfiles">
+<meta charset="UTF-8" />
+<link th:href="@{~/main.css}" rel="stylesheet">
+<link th:href="@{~/paymant.css}" rel="stylesheet">
+<link th:href="@{~/bootstrap.min.css}" rel="stylesheet">
+<link th:href="@{~/fontawesome/css/all.css}" rel="stylesheet">
+
+
+</head>
+<body class="back">
+	<div th:fragment="nav">
+		 
+		 <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="height: 80px">
+	        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+	            <ul class="navbar-nav mr-auto">
+	                <li class="nav-item">
+	                    <a class="nav-link" href="/"><i class="fa fa-home ml-5" style="margin-left: 20px;"></i>Home</a>
+	                </li>
+	                <li class="nav-item" sec:authorize="hasRole('ROLE_ADMIN')">
+	                    <a class="nav-link" href="/flight/addNewFlight">Add Flight</a>
+	                </li>
+	                <li class="nav-item" sec:authorize="hasRole('ROLE_ADMIN')">
+	                    <a class="nav-link" href="/flight/showAllFlightList">Flight List</a>
+	                </li>
+	                </ul>
+	                <form th:action="@{/login.html}" method="get" class="form-inline my-2 my-lg-0 ml-3">
+							<button sec:authorize="isAnonymous()" style="width: 100px;" class="btn btn-outline-success btn-sm ">LOGIN</button>
+					</form>
+					<form th:action="@{/user/registerUser}" method="get" class="form-inline my-2 my-lg-0 ml-3">
+						<button sec:authorize="isAnonymous()" style="width: 100px;" class="btn btn-outline-danger btn-sm " type="submit">SIGN IN</button>
+					</form>
+	                <form th:action="@{/logout}" method="post" class="form-inline my-2 my-lg-0">
+						<button sec:authorize="isAuthenticated()" style="width: 100px;" class="btn btn-outline-danger my-2 my-sm-0 btn-sm mr-2" type="submit">Logout</button>
+					</form>
+	                <form th:action="@{/flight/searchPage}" method="post" class="form-inline my-2 my-lg-0">
+						<button sec:authorize="isAuthenticated()" style="width: 100px;" class="btn btn-outline-info my-2 my-sm-0 btn-sm mr-4" type="submit">Search</button>
+					</form>
+	        </div>
+    	</nav>
+	</div>
+	<div th:fragment="footer" class="footer bg-dark" >
+		<br>
+		<h6>
+			<p >PROJECT CREATED WITH SPRING BOOT AND SPRNG SECURITY FRAMEWORK</p>
+		</h6>
+	</div>
+</body>
+</html>

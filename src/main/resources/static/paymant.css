@@ -1,0 +1,42 @@
+@charset "UTF-8";
+.pay-back{
+	background-image:url('images/f.jpg') ;
+	background-position: center;
+	background-size: cover;
+	font-family: sans-serif;
+	
+}
+.main{
+	background-color:rgba(0,0,0,0.4);
+	width: 700px;
+	margin: auto;
+	padding: 10px 0px 10px 0px;
+	border-radius: 0px 0px 10px 10px;
+	
+}
+.my-form{
+	padding-top:25px;
+	padding-left: 80px;
+}
+.name{
+	width: 60%;
+}
+
+
+.input{
+	width: 400px;
+	border-radius: 2px;
+}
+.lbl{
+	margin-left25px;
+	width: 150px;
+}
+.payment-from{
+	width: 700px;
+	background-color: rgba(0,0,0,6);
+	margin: auto;
+	color: #FFFFFF;
+	padding: 10px 0px 10px 0px;
+	text-align: center;
+	border-radius: 15px 15px 0px 0px;
+}

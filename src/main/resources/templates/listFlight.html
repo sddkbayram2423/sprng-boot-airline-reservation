@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments.html :: headerfiles">
+
+</head>
+<body class="back">
+<header th:insert="fragments.html :: nav"></header>
+
+<div class="container mt-5">
+	<div th:each="flight : ${flights}">
+		<table width="100%">
+			<tr style="background-color: buttonface;height: 50px;">
+				<td>
+					<h5 style="color: #ADB9C5 ;margin-left: 100px;" th:text="${flight.operatingAirlines}"></h5>
+				</td>
+				<td width="200px" style="margin-left: 50px;" >
+					<span style="color: #ADB9C5;margin-left: 10px;">FLIGHT CODE :</span><b><font th:text="${flight.fightCode}"/></b>
+				</td>
+			</tr>
+		</table>
+		
+		<table width="100%">
+			<tr>
+				<td width="35%" style="text-align: center;"><i><b style="color: #ADB9C5;">FROM</b></i></td>
+				<td width="35%" style="text-align: center;"><i><b style=" color: #ADB9C5;">TO</b></i></td>
+				<td width="15%" style="color: #ADB9C5;"/>
+				<td width="15%"></td>
+			</tr>
+			<tr>
+				<td style="text-align: center;"><font style="color: black; size:2;"  th:text="${flight.departureCity}"/></td>
+				<td style="text-align: center;"><font style="color: black; size:2;"  th:text="${flight.arrivalCity}"/> </td>
+				<td style="color: #ADB9C5;">CLASS</td>
+				<td><font style="color: black; size:2;" th:text="${flight.flightClass}"/> Class</td>
+			</tr>
+			<tr>
+				<td style="text-align: center;"><font style="color: black; size:2;"  th:text="${flight.departureDate}"/></td>
+				<td style="text-align: center;"><font style="color: black; size:2;"  th:text="${flight.arrivalDate}"/</td>
+				<td style="color: #ADB9C5;">FLIGHT TIME</td>
+				<td><font style="color: black; size:2;" th:text="${flight.flightTime}"/></td>
+			</tr>
+			<tr>
+				<td style="text-align: center;"><font style="color: black; size:2;"  th:text="${flight.departureTime}"/></td>
+				<td style="text-align: center;"><font style="color: black; size:2;"  th:text="${flight.arrivalTime}"/></td>
+				<td style="color: #ADB9C5;">PRICE</td>
+				<td><font style="color: black; size:1;"  th:text="${flight.price}"/> TL</td>
+			</tr>
+			<tr height="60px" style="background-color: #F1F2F3 ;">
+				<td ><font style="margin-left: 150px;color: red;size: 1;text-align: center;"><font th:text="${flight.leftPassengerCount}"/> seats left</font></td>
+				<td style="text-align: center;"></td>
+				<td style="text-align: center;"></td>
+				<td style="text-align: center;">
+					<form action="#" method="post" th:action="@{/reservation/selectFlight/{id}/(id=${flight.id})}" th:object="${flight}"> 
+						<button class="btn btn-success ">SELECT </button>
+					</form>
+				</td>
+			</tr>
+		</table>
+		<hr style="background-color: green;">
+	</div>
+</div>
+
+
+<footer th:insert="fragments.html :: footer" ></</footer>
+</body>
+</html>

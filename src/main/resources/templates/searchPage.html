@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments.html :: headerfiles">
+</head>
+<header th:insert="fragments.html :: nav"></header>
+<body class="back-search">
+
+		<form action="#" th:action="@{/flight/search}" th:object="${flightDto}" method="post">
+			
+			<div class="my-serach-from">
+				
+				<div class="row" style="margin-left: 30px;">
+					<div class="col-3">
+						<p class="search-label-style">Select Trip Type </p>
+					</div>
+					<div class="col-3 ml-2">
+						<input id="roundTrip" type="radio" th:field="*{tripType}" th:value="RoundTrip" name="destinationType"/> 
+						<label name="destinationType" class="search-label-style">Round Trip</label>
+					</div>
+					<div class="col-2 ml-3">
+						<input id="oneWay" type="radio" th:field="*{tripType}" th:value="OneWay" name="destinationType"/> 
+						<label name="destinationType" class="search-label-style">One Way</label>
+					</div>
+					<div class="col-2 mr-3">
+							<p style="color: red;" th:if="${#fields.hasErrors('tripType')}" th:errors="*{tripType}"/>
+					</div>
+				</div>
+				
+				<hr style="margin-top: 0px;border-color: white;" >
+				
+
+				<div class="row ml-5">
+				
+					<div class="col-3 mr-3">
+						<div class="row">
+							<label for="origin" class="search-label-style"> Departure City </label>
+						</div>
+						<div class="row">
+							<input th:field="*{origin}" type="text" class="form-control" placeholder="Enter departure city ">
+							<p style="color: red;" th:if="${#fields.hasErrors('origin')}" th:class="'error'" th:errors="*{origin}"/>
+						</div>
+					</div>
+	
+					<div class="col-3 mr-3">
+						<div class="row">
+							<label for="destination" class="search-label-style">Arrival City</label>
+						</div>
+						<div class="row">
+							<input  th:field="*{destination}" id="destination" type="text" class="form-control" placeholder="Enter arrival city">
+							<p style="color: red;" th:if="${#fields.hasErrors('destination')}" th:class="'error'" th:errors="*{destination}"/>
+						</div>
+					</div>
+	
+					<div class="col-2 mr-2">
+						<div class="row">
+							<label for="departureDate" class="search-label-style">Depart  </label>
+						</div>
+						<div class="row">
+							<div class="input-group date">
+								<input type="date" class="form-control" id="departureDate" autocomplete="on" th:field="*{departureDate}" placeholder="Departure Date" />
+							</div>
+								<p style="color: red;" th:if="${#fields.hasErrors('departureDate')}" th:class="'error'" th:errors="*{departureDate}"/>
+						</div>
+						
+					</div>
+					
+	
+					<div class="col-2 mr-2">
+						<div class="row">
+							<label for="returnDate" class="search-label-style">Return </label>
+						</div>
+						<div class="row">
+							<div class="input-group date">
+								<input type="date" class="form-control" id="returnDate" autocomplete="on" th:field="*{returnDate}" placeholder="Return Date" />
+							</div>
+								<p style="color: red;" th:if="${#fields.hasErrors('returnDate')}" th:class="'error'"  th:errors="*{returnDate}"/>
+						</div>
+					</div>
+	
+					<div class="col-1">
+						<div class="row ml-2" style="margin-top: 32px;">
+								<button class="btn btn-outline-success">Search</button>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col" style="text-align: center;margin-top: 10px;">
+						<div th:if="${message!=null}"><font style="color:red;" th:text="${message}"/></div>
+					</div>
+				</div>
+			</div>
+		</form>
+<footer th:insert="fragments.html :: footer"></</footer>
+</body>
+</html>

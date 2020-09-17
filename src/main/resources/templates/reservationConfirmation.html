@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments.html :: headerfiles">
+</head>
+<body class="back">
+	<header th:insert="fragments.html :: nav"></header>
+
+<div class="container">
+
+
+<div class="row">
+	<div class="col-8">
+		<div class="card border-secondary  mb-3" style="width: 1000px; height: 300px; margin-left: 55px; margin-top: 50px">
+			
+			<div class="card-header border-secondary ">
+				<div class="row">
+					<div class="col-9">
+						<font size="6" th:text="${flight.operatingAirlines}"/>
+					</div>
+					<div class="col-3">
+						<div class="row">
+							<font size="3" style="text-decoration: underline;color: #ADB9C5;"><i><b>FLIGHT CODE</b></i></font>
+						</div>
+						<div class="row">
+							<font size="3" th:text="${flight.fightCode}"/>
+						</div>
+					</div>
+				</div>
+			</div>
+		
+		
+			<div class="card-body text-dark">
+					<div class="row">
+						<div class="col 6">
+							<font size="2" style="color: #ADB9C5;"><b>NAME OF PASSENGER</b></font>
+						</div>
+						<div class="col 3">
+							<font size="2" style="color: #ADB9C5;"><b>DATE</b></font>
+						</div>
+						<div class="col 3">
+							<font size="2" style="color: #ADB9C5;"><b>TIME</b></font>
+						</div>
+					</div>
+				
+					<div class="row mt-1">
+						<div class="col 6">
+							<font size="3" th:with="result=${reservationRequest.firstName +' '+reservationRequest.lastName}"  th:text="${result}"/>
+						</div>
+						<div class="col 3">
+							<font  th:text="${flight.departureDate}"/>
+						</div>
+						<div class="col 3">
+							<font th:text="${flight.departureTime}"/>
+						</div>
+					</div>
+					
+				
+					<div class="row mt-2">
+						<div class="col 6">
+							<font size="2" style="color: #ADB9C5;"><b>CLASS</b></font>
+						</div>
+						<div class="col 3">
+							<font size="2" style="color: #ADB9C5;"><b>WEIGHT OF BAGS</b></font>
+						</div>
+						<div class="col 3">
+							<font size="2" style="color: #ADB9C5;"><b>CHECKED</b></font>
+						</div>
+					</div>
+				
+					<div class="row mt-1">
+						<div class="col 6">
+							<font   th:text="${flight.flightClass}"/>
+						</div>
+						<div class="col 3">
+							<font   th:text="${reservationRequest.numberOfBags}"/>
+						</div>
+						<div class="col 3">
+							<font th:text="${reservationRequest.checkedIn}"/>
+						</div>
+					</div>
+				
+				<hr>
+					<div class="row mt-2">
+						<div class="col-4">
+							<font size="2" style="color: #ADB9C5;"><b>FROM :</b></font>
+							<font  th:text="${flight.departureCity}"/>
+						</div>
+						<div class="col-4">
+							<font size="2" style="color: #ADB9C5;"><b>TO :</b></font>
+							<font   th:text="${flight.arrivalCity}"/>
+						</div>
+						<div class="col-4">
+							<font size="2" style="color: #ADB9C5;"><b>TOTAL FLIGHT TIME :</b></font>
+							<font   th:text="${flight.flightTime}"/>
+						</div>
+					</div>
+				</div>
+					<div style="margin-top: 30px;text-align: right;" class="container">
+						<font style="color: blue; size: 25;" th:text="${msg}" />
+					</div>
+			</div>
+		</div>
+	</div>
+</div>	
+<footer th:insert="fragments.html :: footer"></footer>
+</body>
+</html>

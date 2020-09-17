@@ -1,0 +1,183 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments.html :: headerfiles">
+
+  
+     
+</head>
+<body class="pay-back" >
+<header th:insert="fragments.html :: nav"></header>
+<br>
+
+
+<!-- <div class="container"> -->
+					
+		
+	<div class="payment-from">
+		<h1>Payment Form</h1>
+	</div>
+	<div class="main">
+		<form class="my-form" method="post" th:action="@{/reservation/complete-reservation/{id}/(id=${flight.id})}" th:object="${reservationRequest}">
+			<div id="name">
+				<div class="row form-group">
+					<div class="col-3">
+						<label>Name</label>
+					</div>
+					<div class="col-8">
+						<input type="text" th:field="*{firstName}" class="form-control" placeholder="Firstname">
+                        <p style="color: red;" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"/>
+					</div>
+				</div>
+				<div class="row form-group">
+					<div class="col-3">
+						<label>Lastname</label>
+					</div>
+					<div class="col-8">
+						<input type="text" th:field="*{lastName}" class="form-control"	placeholder="Lastname"> 
+						<p style="color: red;" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"/>
+					</div>
+				</div>
+				<div class="row form-group">
+					<div class="col-3">
+						<label >Email</label> 
+					</div>
+					<div class="col-8">
+						<input type="email" th:field="*{email}" class="form-control" placeholder="Email"> 
+						<p style="color: red;" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"/>
+					</div>
+				</div>
+				<div class="row form-group">
+					<div class="col-3">
+						<label >Phone Number</label> 
+					</div>
+					<div class="col-8">
+							<input type="number"  th:field="*{phoneNumber}" class="form-control" placeholder="Phone number">
+							<p style="color: red;" th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"/>
+					</div>
+				</div>
+				<div class="row form-group">
+					<div class="col-3">
+						<label >Weight of Bag</label> 
+					</div>
+					<div class="col-8">
+						<input type="text"  th:field="*{numberOfBags}" class="form-control" placeholder="Weight of bag">
+						<p style="color: red;" th:if="${#fields.hasErrors('numberOfBags')}" th:errors="*{numberOfBags}"/>
+					</div>
+				</div>
+				<div class="row form-group">
+					<div class="col-3">
+						<label >Name on Card</label> 
+					</div>
+					<div class="col-8">
+						<input class="form-control" th:field="*{nameOnCard}" type="text" placeholder="Name on card..."> 
+						<p style="color: red;" th:if="${#fields.hasErrors('nameOnCard')}" th:errors="*{nameOnCard}"/>
+					</div>
+				</div>
+				<div class="row form-group">
+					<div class="col-3">
+						<label >Card Number</label> 
+					</div>
+					<div class="col-8">
+						<input class="form-control" th:field="*{cardNumber}" type="number" placeholder="0000-0000-0000-0000">
+						<p style="color: red;" th:if="${#fields.hasErrors('cardNumber')}" th:errors="*{cardNumber}"/>
+					</div>
+				</div>
+				<div class="row form-group">
+					<div class="col-3">
+						<label class="lbl">Expiry Date</label> 
+					</div>
+					<div class="col-2">
+							<input class="form-control" th:field="*{expiryDateYear}" type="text" placeholder="Expiry Year (Last to nymber of year)">
+							<p style="color: red;" th:if="${#fields.hasErrors('expiryDateYear')}" th:errors="*{expiryDateYear}"/>
+					</div>
+					<div class="col-3">
+							<input class="form-control" th:field="*{expiryDateMonth}"  type="text" placeholder="Expiry Month"> 
+							<p style="color: red;" th:if="${#fields.hasErrors('expiryDateMonth')}" th:errors="*{expiryDateMonth}"/>
+					</div>
+					<div class="col-1 mt-1">
+						<label >CVC</label> 
+					</div>
+					<div class="col-2">
+						<input class="form-control" th:field="*{securityCode}"  type="text" placeholder="Enter CVC number"> 
+						<p style="color: red;" th:if="${#fields.hasErrors('securityCode')}" th:errors="*{securityCode}"/>
+					</div>
+				</div>
+				<div class="row form-group">
+					<div class="col-3">
+						
+					</div>
+					<div class="col-8">
+						<div class="row ml-1 mr-1" >
+							<button class="btn btn-success btn-block">Create Reservation</button>
+						</div>
+					</div>
+				</div>
+			
+				<div class="row mt-2 ml-1 mr-1 mt-4">
+					<font size="1">* CVV2 (3 digit number on back of Visa/MC) </font>
+				</div>
+			<hr>	
+			
+			
+	
+				
+				<div class="container">
+
+						<div class="row mt-3 mr-5">
+							<div class="col-9 ">
+								<h6 style="color: blue; margin-left: 150px;" th:text="${flight.operatingAirlines}"></h6>
+							</div>
+						</div>
+
+		<hr style="margin-top: 0px">	
+		
+		
+		<div class="row" >
+			<div class="col-3">
+				<font style="color: black; size:2;"  th:text="${flight.departureCity}"/>
+			</div>
+			<div class="col-3">
+				<font style="color: black; size:2;"  th:text="${flight.arrivalCity}"/>
+			</div>
+			<div class="col-3">
+				<font style="color: black; size:2;" th:text="${flight.flightClass}"/> Class
+			</div>
+		</div>	
+		
+		
+		
+				<div class="row" >
+					<div class="col-3">
+						<font style="color: black; size:2;"  th:text="${flight.departureDate}"/>
+					</div>
+					<div class="col-3">
+						<font style="color: black; size:2;"  th:text="${flight.arrivalDate}"></font>
+					</div>
+					<div class="col-3">
+						<font style="color: black; size:1;"  th:text="${flight.price}"/> TL
+					</div>
+				</div>	
+				
+				
+				<div class="row" >
+					<div class="col-3">
+						<font style="color: black; size:2;"  th:text="${flight.departureTime}"/>
+					</div>
+					<div class="col-3">
+						<font style="color: black; size:2;"  th:text="${flight.arrivalTime}"/>
+					</div>
+					<div class="col-3">
+						<font style="color: black; size:2;" th:text="${flight.flightTime}"/>
+					</div>
+				</div>	
+				</div>
+				
+			</div>
+		</form>
+	</div>
+	<br><br>
+	<br><br>
+	<br><br>
+	<br><br>
+	<footer th:insert="fragments.html :: footer" ></</footer>
+</body>
+</html>

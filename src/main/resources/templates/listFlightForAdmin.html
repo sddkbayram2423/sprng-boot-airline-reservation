@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments.html :: headerfiles">
+
+</head>
+<body class="back">
+<header th:insert="fragments.html :: nav"></header>
+
+<table border="1px" style="margin-left: 3px; margin-top: 25px;">
+	<thead >
+		<tr bgcolor="gray" style="table-layout: auto;">
+			<td style="text-align: center;" width="110px"><i>FLIGHT CODE</i></td>
+			<td style="text-align: center;" width="170px"><i>OPERATION AIRLINE</i></td>
+			<td style="text-align: center;" width="113px"><i>FLIGHT CLASS</i></td>
+			<td style="text-align: center;" width="130px"><i>DEPARTURE CITY</i></td>
+			<td style="text-align: center;" width="110px"><i>ARRIVAL CITY</i></td>
+			<td style="text-align: center;" width="140px"><i>DEPARTURE DATE</i></td>
+			<td style="text-align: center;" width="140px"><i>DEPARTURE TIME</i></td>
+			<td style="text-align: center;" width="120px"><i>ARRIVAL DATE</i></td>
+			<td style="text-align: center;" width="120px"><i>ARRIVAL TIME</i></td>
+			<td style="text-align: center;" width="100px"><i>FLIGHT TIME</i></td>
+			<td style="text-align: center;" width="90px"><i>L.P.COUNT</i></td>
+			<td style="text-align: center;" width="80px"><i>PRICE</td>
+			<td width="100px" colspan="2"></td>
+		</tr>
+	</thead>
+	<tbody th:each="flight : ${flights}">
+		<tr>
+			<td><font style="margin-left: 2px;" th:text="${flight.fightCode}"/></td>
+			<td><font style="margin-left: 2px;" th:text="${flight.operatingAirlines}"/></td>
+			<td><font style="margin-left: 2px;" th:text="${flight.flightClass}"/> Class</td>
+			<td><font style="margin-left: 2px;" th:text="${flight.departureCity}"/></td>
+			<td><font style="margin-left: 2px;" th:text="${flight.arrivalCity}"/></td>
+			<td><font style="margin-left: 2px;" th:text="${flight.departureDate}"/></td>
+			<td><font style="margin-left: 2px;" th:text="${flight.departureTime}"/></td>
+			<td><font style="margin-left: 2px;" th:text="${flight.arrivalDate}"/></td>
+			<td><font style="margin-left: 2px;" th:text="${flight.arrivalTime}"/></td>
+			<td><font style="margin-left: 2px;" th:text="${flight.flightTime}"/></td>
+			<td><font style="margin-left: 2px;" th:text="${flight.leftPassengerCount}"/></td>
+			<td><font style="margin-left: 2px;" th:text="${flight.price}"/> TL</td>
+			<td><a style="margin-left: 2px;color: red;" th:href="@{/flight/delete/{id}(id=${flight.id})}">Delete</a></td>
+			<td><a style="margin-left: 2px;" th:href="@{/flight/edit/{id}(id=${flight.id})}">Edit</a> </td>
+		</tr>
+	</tbody>
+</table>
+<footer th:insert="fragments.html :: footer" style="margin-top:300px;"></</footer>
+</body>
+</html>
